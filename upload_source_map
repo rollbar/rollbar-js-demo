@@ -1,0 +1,8 @@
+#!/bin/bash
+curl https://api.rollbar.com/api/1/sourcemap \
+  -F access_token=a027d5304f2f436dbd2bbb229cda1b89 \
+  -F version=1 \
+  -F minified_url=http://localhost:8080/dist/all.min.js \
+  -F source_map=@dist/all.min.map \
+  -F site.js=@src/site.js \
+  -F util.js=@src/util.js

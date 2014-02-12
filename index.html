@@ -8,7 +8,7 @@
         uncaughtErrorLevel: "error",
         reportLevel: "debug",
         payload: {
-            environment: "test",
+            environment: "demo",
             person: {
                 id: 123,
                 username: "brian",
@@ -28,13 +28,23 @@
 
     <script type="text/javascript" src="./dist/all.min.js"></script>
 
+    <style>
+        button {
+            font-size: 18px;
+            padding: 6px;
+        }
+
+    </style>
+
   </head>
   <body>
     <h1>Demo</h1>
 
-    <button onclick="badArrayAccess();">Bad array access - uncaught</button>
-    <button onclick="caughtBadArrayAccess();">Bad array access - caught</button>
+    <h2>Errors (with stack traces)</h2>
+    <button onclick="badArrayAccess();">Uncaught</button>
+    <button onclick="caughtBadArrayAccess();">Caught</button>
 
+    <h2>Messages (message only)</h2>
     <div>
         <input type="text" id="textinput" placeholder="Enter message">
         <button onclick="Rollbar.debug(getMessage());">Debug</button>

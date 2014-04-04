@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Analytics.js with Rollbar JS Demo</title>
+    <script type="text/javascript" src="./analytics.js"></script>
+
+    <script>
+      analytics.initialize({"Rollbar": {"accessToken":"POST_CLIENT_ITEM_ACCESS_TOKEN","captureUncaught":true,"environment":"cory-test"}});
+
+      analytics.identify('1', {
+        name: 'Cory Virok',
+        email: 'cory@rollbar.com'
+      });
+    </script>
+
+    <script type="text/javascript" src="./dist/all.min.js"></script>
+
+    <style>
+      button {
+        font-size: 18px;
+        padding: 6px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>Demo</h1>
+
+    <h2>Errors (with stack traces)</h2>
+    <button onclick="badArrayAccess();">Uncaught</button>
+    <button onclick="caughtBadArrayAccess();">Caught</button>
+
+    <h2>Messages (message only)</h2>
+    <div>
+      <input type="text" id="textinput" placeholder="Enter message">
+      <button onclick="Rollbar.debug(getMessage());">Debug</button>
+      <button onclick="Rollbar.info(getMessage());">Info</button>
+      <button onclick="Rollbar.warning(getMessage());">Warning</button>
+      <button onclick="Rollbar.error(getMessage());">Error</button>
+      <button onclick="Rollbar.critical(getMessage());">Critical</button>
+    </div>
+    
+    <script>
+      function getMessage() {
+        return document.getElementById('textinput').value;
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Segment.io with Rollbar JS Demo</title>
+    <script type="text/javascript">
+      window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+      window.analytics.load("KEY");
+      window.analytics.page();
+    </script>
+    <script>
+      analytics.identify('1', {
+        name: 'Cory Virok',
+        email: 'cory@rollbar.com'
+      });
+    </script>
+
+    <script type="text/javascript" src="./dist/all.min.js"></script>
+
+    <style>
+      button {
+        font-size: 18px;
+        padding: 6px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>Demo</h1>
+
+    <h2>Errors (with stack traces)</h2>
+    <button onclick="badArrayAccess();">Uncaught</button>
+    <button onclick="caughtBadArrayAccess();">Caught</button>
+
+    <h2>Messages (message only)</h2>
+    <div>
+      <input type="text" id="textinput" placeholder="Enter message">
+      <button onclick="Rollbar.debug(getMessage());">Debug</button>
+      <button onclick="Rollbar.info(getMessage());">Info</button>
+      <button onclick="Rollbar.warning(getMessage());">Warning</button>
+      <button onclick="Rollbar.error(getMessage());">Error</button>
+      <button onclick="Rollbar.critical(getMessage());">Critical</button>
+    </div>
+    
+    <script>
+      function getMessage() {
+        return document.getElementById('textinput').value;
+      }
+    </script>
+
+  </body>
+</html>
